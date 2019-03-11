@@ -8,9 +8,9 @@ sudo docker build -t pyep .
 
 Then initiate and instance with the docker run command:
 ```bash
-sudo docker run  --name=testpyep -it -p 5064:5064 -p 5065:5065 -p 5064:5064/udp -p 5065:5065/udp ioctest
+sudo docker run  --name=testpyep -it pyep
 ```
-This will launch an interactive bash env so you can see it spitting out value of the test channel C3:EXP-modbusDocker (the default).
+This will launch an interactive bash env so you can see it spitting out value of the test channel C3:EXP-modbusDocker (the default). There is no need to expose ports as the docker is reaching out to the network for connections, outside containers are not requesting access into the container.
 
 You can run this along side fincle/modbusEPICSDocker for testing.  
 
