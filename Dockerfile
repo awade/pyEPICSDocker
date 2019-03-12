@@ -11,10 +11,6 @@ ENV EPICS_HOST_ARCH="linux-x86_64" \
 
 
 # Build the epics base for access to channels through pyepics
-#RUN apt-get --yes install \
-#    python
-#RUN apt-get --yes install \
-#    python-pip
 RUN apt-get update -q \
     && apt-get --yes install \
        curl g++ make libperl-dev libreadline-dev wget \
@@ -31,6 +27,10 @@ RUN apt-get update -q \
     && apt-get clean
 
 COPY requirements.txt /
+
+RUN apt-get -y install libc-dev
+RUN apt-get -y install build-essential
+RUN pip install -U pip
 
 # Install pyepics requirements
 RUN pip install -r /requirements.txt
